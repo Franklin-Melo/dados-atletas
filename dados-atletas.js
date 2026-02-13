@@ -25,10 +25,25 @@ class Atleta {
         }
 
         // para calcular o IMC do atleta;
-        calculaIMC() {}
+        calculaIMC() {
+                 //imc = peso / (altura x altura)
+                return this.peso/(this.altura * this.altura)
+        }
 
         //para calcular a média válida do atleta
-        calculaMediaValida() {}
+        calculaMediaValida() {
+                const notasOrdenadas = [...this.notas].sort((a, b) => a - b);
+
+                // Remove a menor e a maior nota
+                notasOrdenadas.shift();
+                notasOrdenadas.pop();
+
+                const soma = notasOrdenadas.reduce(
+                        (acc, nota) => acc + nota,
+                        0,
+                );
+                return soma / notasOrdenadas.length;
+        }
 
         //que retorna o nome do atleta
         obtemNomeAtleta() {
@@ -57,23 +72,12 @@ class Atleta {
 
         //que retorna o IMC do atleta
         obtemIMC() {
-                //imc = peso / (altura x altura)
-                return this.peso/(this.altura * this.altura)
+               return this.calculaIMC()
         }
 
         //que retorna a média válida do atleta
         obtemMediaValida(){
-                 const notasOrdenadas = [...this.notas].sort((a, b) => a - b);
-
-                 // Remove a menor e a maior nota
-                 notasOrdenadas.shift();
-                 notasOrdenadas.pop();
-
-                 const soma = notasOrdenadas.reduce(
-                         (acc, nota) => acc + nota,
-                         0,
-                 );
-                 return soma / notasOrdenadas.length;
+                 return this.calculaMediaValida()
 
         }
 
